@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: "Why choose medicare?",
     content:
-      "Every year, Medicare Hospitals see patients traveling from various countries to seek treatment at the hospitals. Our highly experience staff knows exactly how to assist international patients such as yourself. At Medicare  we go the extra mile to not only provide you with top quality medical treatment but undivided attention and care from the moment you arrive at the airport.",
+      "Every year, Medicare Hospitals see patients traveling from various places to seek treatment at the hospitals.we are providing you a platform to book your appointment here and visit your favourite doctors before you go to hospitals.",
   },
   {
     question: "What happens if I need to go a hospital?",

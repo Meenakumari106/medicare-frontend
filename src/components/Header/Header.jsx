@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import logo from '../../assets/images/logo.png'
-import userImg from '../../assets/images/useri.jpg'
 import { NavLink, Link } from 'react-router-dom'
 import { BiMenu } from 'react-icons/bi';
+import { authContext } from '../../context/AuthContext'
+import userImg from '../../assets/images/useri.jpg'
 
 const navLinks =
   [
@@ -33,7 +34,7 @@ const Header = () => {
 
   const headerRef = useRef(null)
   const menuRef = useRef(null)
-
+  const { user, role, token } = useContext(authContext)
 
   const handleStickyHeader = () => {
     window.addEventListener('scroll', () => {
@@ -55,67 +56,79 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleStickyHeader)
   });
 
-  const toggleMenu =() =>menuRef.current.classList.toggle('show__menu')
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu')
 
   return (
-  <header className="header flex items-center" ref={headerRef}>
-    <div className="container">
-      <div className="flex items-center justify-between">
-        {/*======================logo===================== */}
-        <div>
-          <img src={logo} alt='' />
-        </div>
-
-
-
-
-        {/*==============menu==============  */}
-        <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-          <ul className="menu flex items-center gap-[2.2rem]">
-            {
-              navLinks.map((link, index) =>
-                <li key={index}>
-                  <NavLink to={link.path} className={navClass => navClass.isActive ? "text-blue-500 text-[16px] leading-7 font-[600]" :
-                    "text-textColor text-[16px] leading-7 font-[500] hover:text-blue-500"}>
-                    {link.display}</NavLink>
-                </li>)
-            }
-          </ul>
-        </div>
-
-
-        {/* ===========nav right =========*/}
-        <div className='flex items-center gap-4'>
-          <div className='hidden'>
-            <Link to='/'>
-              <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
-
-                <img src={userImg} alt='' className='w-full-rounded-full '></img>
-              </figure>
-
-            </Link>
+    <header className="header flex items-center" ref={headerRef}>
+      <div className="container">
+        <div className="flex items-center justify-between">
+          {/*======================logo===================== */}
+          <div>
+            <img src={logo} alt='' />
           </div>
 
 
-          <Link to='/login'>
-            <button className='bg-blue-500 py-2 px-6 text-white font-[600] h-[44px] flex items-center
-            justify-center rounded-[50px]'>Login</button>
-          </Link>
 
-          <span className='md:hidden' onClick={toggleMenu}>
-            <BiMenu className='w-6 h-6 cursor-pointer' />
-          </span>
+
+          {/*==============menu==============  */}
+          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+            <ul className="menu flex items-center gap-[2.2rem]">
+              {
+                navLinks.map((link, index) =>
+                  <li key={index}>
+                    <NavLink to={link.path} className={navClass => navClass.isActive ? "text-blue-500 text-[16px] leading-7 font-[600]" :
+                      "text-textColor text-[16px] leading-7 font-[500] hover:text-blue-500"}>
+                      {link.display}</NavLink>
+                  </li>)
+              }
+            </ul>
+          </div>
+
+
+          {/* ===========nav right =========*/}
+          <div className='flex items-center gap-4'>
+            {
+              token && user ? (
+                <div>
+                  <Link to={`${role === 'doctor' ? '/doctors/profile/me' : '/users/profile/me'}`}>
+                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
+
+                      {user?.photo ? (
+                        <img src={user?.photo} alt='' className='w-full rounded-full'></img>
+                      ) : (
+                        <img src={userImg} alt='' className='w-full rounded-full'></img>
+                      )}
+                    </figure>
+                  </Link>
+                </div>
+              ) : (
+                <Link to='/login'>
+                  <button className='bg-blue-500 py-2 px-6 text-white font-[600] h-[44px] flex items-center
+            justify-center rounded-[50px]'>Login</button>
+                </Link>)
+            }
+
+
+            {/* to show the login user but once we refresh the page the login user will not be present to ensure that we need to local store it*/}
+            {/* <h1>{user?.name}</h1> */}
+            {/* conditional rendering */}
+
+
+
+            <span className='md:hidden' onClick={toggleMenu}>
+              <BiMenu className='w-6 h-6 cursor-pointer' />
+            </span>
+
+          </div>
+
+
+
+
+
 
         </div>
-
-          
-
-
-
-
       </div>
-    </div>
-  </header>)
+    </header>)
 };
 
 export default Header;

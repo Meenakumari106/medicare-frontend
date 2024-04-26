@@ -15,7 +15,7 @@ export default {
         yellowColor: "#FEB^0D",
         purpleColor: "#9771FF",
         irisBlueColor: "#5A4FCF",
-        headingColor: "181A1E",
+        headingColor: "#181A1E",
         textColor: "#4E545F",
 
       },
