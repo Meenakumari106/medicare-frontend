@@ -30,7 +30,8 @@ const Home = () => {
             <div className='lg:w-[570px]'>
               <h1 className='text-[36px] leading-[46px] text-headingColor font-[800] md:text-[60px] md:leading-[70px]'>Where Care 💗 meets Hope🩺.</h1>
               <p className='text__para'>In hospitals, compassion is the heartbeat, expertise is the medicine, and empathy is the salve that heals not just bodies, but souls.</p>
-              <button className='btn'>Request an Appointment</button>
+              <Link to='/doctors'>  <button className='btn'>Request an Appointment</button>
+               </Link>
             </div>
 
             {/* hero counter */}

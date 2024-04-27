@@ -39,7 +39,7 @@ const DoctorsDetails = () => {
 
   return <section>
     <div className='max-w-[1170px] px-5 mx-auto'>
-
+  
       {loading && <Loader />}
       {error && <Error />}
 

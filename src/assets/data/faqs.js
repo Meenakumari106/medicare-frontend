@@ -12,7 +12,7 @@ export const faqs = [
   {
     question: "How to book  an appointment ?",
     content:
-      "You can schedule an appointment online at {link} to schedule a medical appointment or Online Consultation at {link}.",
+      "You can schedule an appointment online at request appointment in home page to schedule a medical appointment or find a doctor page to book appointment. ",
   },
   {
     question: "What type of information should i provide befor booking an appointment?",
