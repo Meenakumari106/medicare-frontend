@@ -2,6 +2,8 @@ import React from 'react'
 import { formatDate } from '../../utils/formatDate';
 
 const Appointments = ({ appointments }) => {
+    console.log(appointments)
+
     return (
         <table className='w-full text-sm text-gray-500'>
             <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
@@ -53,7 +55,7 @@ const Appointments = ({ appointments }) => {
                 UnPaid
                 </div>}
             </td>
-        <td className='px-6 py-4'>{item.user.ticketPrice}</td>
+        <td className='px-6 py-4'>{item.ticketPrice}</td>
         <td className='px-6 py-4'>{formatDate(item.createdAt)}</td>
 
 
@@ -66,3 +68,5 @@ const Appointments = ({ appointments }) => {
 }
 
 export default Appointments;
+
+

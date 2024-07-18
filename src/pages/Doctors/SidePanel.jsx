@@ -61,7 +61,7 @@ const SidePanel = ({doctorId,ticketPrice,timeSlots}) => {
                 
             </ul>
         </div>
-        <button onClick={bookingHandler} className='btn px-2 w-full rounded-md' >Book Appointmnet</button>
+        <button onClick={bookingHandler} className='btn px-2 w-full rounded-md' >Book Appointment</button>
         </div>
   )
 }
